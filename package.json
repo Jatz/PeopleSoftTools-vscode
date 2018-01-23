@@ -1,0 +1,152 @@
+{
+  "name": "peoplesoft-tools",
+  "description": "An unofficial PeopleSoft plugin for various PeopleSoft related tasks",
+  "displayName": "PeopleSoft Tools",
+  "author": "Jay Mathew",
+  "icon": "images/peoplesoft_tools.png",
+  "license": "MIT",
+  "version": "0.1.0",
+  "publisher": "Jatz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jatz/PeopleSoftTools-vscode.git"
+  },
+  "engines": {
+    "vscode": "^1.16.0"
+  },
+  "categories": [
+    "Other",
+    "Languages",
+    "Snippets"
+  ],
+  "activationEvents": [
+    "onLanguage:peoplecode",
+    "onLanguage:peoplecode_trace",
+    "onLanguage:peoplesoft_cobol_trace",
+    "onCommand:extension.peoplesoft-tools-tidy-peoplecode-trace",
+    "onCommand:extension.peoplesoft-tools-extract-call-stack"
+  ],
+  "main": "./out/src/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.peoplesoft-tools-tidy-peoplecode-trace",
+        "title": "PeopleSoft Tools: Tidy PeopleCode Trace"
+      },
+      {
+        "command": "extension.peoplesoft-tools-extract-call-stack",
+        "title": "PeopleSoft Tools: Extract Call Stack"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Example configuration",
+      "properties": {
+        "peoplesoft-tools-tidy.removeHeaders": {
+          "type": "boolean",
+          "default": true,
+          "description": "Removes the PSAPPSRV header text to make the trace file easier to read."
+        },
+        "peoplesoft-tools-tidy.removeAllBlankLines": {
+          "type": "boolean",
+          "default": true,
+          "description": "Removes any blank lines in the trace file."
+        }
+      }
+    },
+    "languages": [
+      {
+        "id": "peoplecode",
+        "aliases": [
+          "PeopleCode",
+          "peoplecode"
+        ],
+        "extensions": [
+          ".ppl",
+          ".pcode"
+        ],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "peoplecode_trace",
+        "aliases": [
+          "PeopleCode Trace",
+          "tracesql"
+        ],
+        "extensions": [
+          ".tracesql"
+        ],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "peoplesoft_cobol_trace",
+        "aliases": [
+          "PeopleSoft COBOL Trace",
+          "trace_cobol"
+        ],
+        "extensions": [
+          ".trc"
+        ],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "peoplesoft_callstack",
+        "aliases": [
+          "PeopleCode Call Stack",
+          "peoplecode_callstack"
+        ],
+        "extensions": [
+          ".pcstack"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "peoplecode",
+        "path": "./snippets/peoplecode.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "peoplecode",
+        "scopeName": "source.peoplecode",
+        "path": "./syntaxes/PeopleCode.tmLanguage"
+      },
+      {
+        "language": "peoplecode_trace",
+        "scopeName": "source.peoplecode.tracesql",
+        "path": "./syntaxes/PeopleSoftTrace.tmLanguage"
+      },
+      {
+        "language": "peoplesoft_cobol_trace",
+        "scopeName": "source.peoplecode.tracepsoftcobol",
+        "path": "./syntaxes/PeopleSoftTraceCOBOL.tmLanguage"
+      },
+      {
+        "language": "peoplesoft_callstack",
+        "scopeName": "source.peoplecode.psoftcallstack",
+        "path": "./syntaxes/PeopleCodeCallStack.tmLanguage"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "dependencies": {
+    "event-stream": "^3.3.4",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
+    "stream": "0.0.2",
+    "util": "^0.10.3",
+    "vscode": "^1.1.5",
+    "vscode-languageclient": "^3.4.2"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^6.0.88",
+    "typescript": "^2.5.2"
+  }
+}

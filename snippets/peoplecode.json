@@ -1,0 +1,267 @@
+{
+	"Evaluate": {
+		"prefix": "Evaluate",
+		"body":	[
+		"Evaluate ${1:enter condition here}",
+		"When ${2:value1}",
+		"   Break;",
+		"When ${3:value2}",
+		"   Break;",
+		"When-Other",
+		"    ${4:}",
+		"   Break;",
+		"End-Evaluate;"
+		],
+		"description": "Evaluate Statement",
+		"scope": "source.peoplecode"
+	},
+	"Filelog_NoAppend": {
+		"prefix": "Filelog_NoAppend",
+		"body": [
+		"/* Standard write to file - no append */",
+		"Local File &fileLog = GetFile(GetEnv(\"PS_SERVDIR\") | \"\\LOGS\\\" | \"${1:logfilename.log}\", \"w\", \"a\", %FilePath_Absolute);",
+		"&fileLog.WriteLine(\"Begin\");",
+		"&fileLog.WriteLine(\"\");",
+		"&fileLog.WriteLine(\"${2:Add text here}\");",
+		"&fileLog.WriteLine(\"\");",
+		"&fileLog.WriteLine(\"End\");",
+		"&fileLog.Close();"
+		],
+		"description": "Write to File - No Append",
+		"scope": "source.peoplecode"
+	},
+	"Filelog_Append": {
+		"prefix": "Filelog_Append",
+		"body": [
+		"/* Standard write to file - append */",
+		"Local File &fileLog = GetFile(GetEnv(\"PS_SERVDIR\") | \"\\LOGS\\\" | \"${1:logfilename.log}\", \"a\", %FilePath_Absolute);",
+		"&fileLog.WriteLine(\"Begin\");",
+		"&fileLog.WriteLine(\"\");",
+		"&fileLog.WriteLine(\"${2:Add text here}\");",
+		"&fileLog.WriteLine(\"\");",
+		"&fileLog.WriteLine(\"End\");",
+		"&fileLog.Close();"
+		],
+		"description": "Write to File - Append",
+		"scope": "source.peoplecode"
+	},
+	"XMLDoc_WriteToFile": {
+		"prefix": "XMLDoc_WriteToFile",
+		"body": [
+		"/* Writing XML Doc to file */",
+		"/* Creates an XML file with element name \"${1:XML_ELEMENT_NAME}\" */",
+		"Local XmlDoc &xmlDoc = CreateXmlDoc(\"<?xml version='1.0'?><${1:XML_ELEMENT_NAME}/>\");",
+		"&xmlDoc.DocumentElement.AddNode(&parentNode);",
+		"Local string &xmlString = &xmlDoc.GenFormattedXmlString();",
+		"Local File &log = GetFile(GetEnv(\"PS_SERVDIR\") | \"\\LOGS\\\" | \"${2:logfilename.log}\", \"A\", %FilePath_Absolute);",
+		"&log.WriteLine(&xmlString);"
+		],
+		"description": "Write XMLDoc to File",
+		"scope": "source.peoplecode"
+	},
+	"MessageBox": {
+		"prefix": "MessageBox",
+		"body": [
+		"/* Here's a message box in SaveEdit that has OK and Cancel buttons: */",
+		"/* Note: If you don't put it in save edit and put it somewhere else, you may not see the OK and Cancel buttons */",
+		"If MessageBox(%MsgStyle_OKCancel, \"\", 25000, 286, \"Message not found.\", \"Enter Bind Variable here\") = %MsgResult_Cancel Then",
+		"   Exit (1);",
+		"End-If;",
+		"",
+		"/* Using MessageBox in an App Engine */",
+		"/* If you want to log in app engine and just want a quick one line message that'll appear in the message log, then you can use: */",
+		"MessageBox(%MsgStyle_OK, \"This will be ignored\", 0,0, \"Display Me\");",
+		"",
+		"/* Use WinMessage if you don't want to display the message set number and message number */",
+		"/* For example: */",
+		"WinMessage(MsgGetExplainText(25000, 272, \"Insert message here.\"), %MsgStyle_OK);"
+		],
+		"description": "MessageBox snippets",
+		"scope": "source.peoplecode"
+	},
+	"Class": {
+		"prefix": "Class",
+		"body": [
+		"class ${1:className}",
+		"   method ${1}(${2:constructorParams});",
+		"   method ${3:methodName}(${4:methodSignature}) Returns ${5:methodReturnType};",
+		"",
+		"   property ${6:type} ${7:propertyNameWithout&};",
+		"",
+		"private",
+		"",
+		"   instance ${8:instanceVarType} ${9:instanceVarValue};",
+		"",
+		"end-class;",
+		"",
+		"",
+		"method ${1}",
+		"    ${10:/* Enter Constructor Code here */}",
+		"end-method;",
+		"",
+		"method ${3}",
+		"    ${11:/* Enter Method Code here */}",
+		"",
+		"end-method;"
+		],
+		"description": "Application Class Template",
+		"scope": "source.peoplecode"
+	},
+	"IBSynchronousOnRequestHandler": {
+		"prefix": "IBSynchronousOnRequestHandler",
+		"body": [
+		"import PS_PT:Integration:IRequestHandler;",
+		"",
+		"class ${1:className} implements PS_PT:Integration:IRequestHandler",
+		"   method OnRequest(&p_msg As Message) Returns Message;",
+		"   method OnError(&p_msg As Message) Returns string;",
+		"end-class;",
+		"",
+		"method OnRequest",
+		"   /+ &p_msg as Message +/",
+		"   /+ Returns Message +/",
+		"   /+ Extends/implements PS_PT:Integration:IRequestHandler.OnRequest +/",
+		"   Local Message &request, &response;",
+		"",
+		"   /* Get the request values */",
+		"   &request = &p_msg;",
+		"",
+		"   /* For now send the response back */",
+		"   &response = &request;",
+		"",
+		"   Return &response;",
+		"",
+		"end-method;",
+		"",
+		"method OnError",
+		"   /+ &p_msg as Message +/",
+		"   /+ Returns String +/",
+		"   /+ Extends/implements PS_PT:Integration:IRequestHandler.OnError +/",
+		"   Local integer &nMsgSetNumber, &nMsgNumber;",
+		"   Local string &str;",
+		"   &nMsgNumber = &p_msg.IBException.MessageNumber;",
+		"   &nMsgSetNumber = &p_msg.IBException.MessageSetNumber;",
+		"   &str = &p_msg.IBException.DefaultText;",
+		"   Return &str;",
+		"end-method;"
+		],
+		"description": "Integration Broker - Synchronous OnRequest Handler",
+		"scope": "source.peoplecode"
+	},
+	"PSUnit": {
+		"prefix": "PSUnit",
+		"body": [
+		"import TTS_UNITTEST:TestBase;",
+		"",
+		"class ${1} extends TTS_UNITTEST:TestBase",
+		"   method ${1}();",
+		"   method Setup();",
+		"   method Teardown();",
+		"   method Run();",
+		"",
+		"private",
+		"",
+		"",
+		"end-class;",
+		"",
+		"method ${1}",
+		"   %Super = create TTS_UNITTEST:TestBase(\"${1}\");",
+		"",
+		"end-method;",
+		"",
+		"",
+		"method Setup",
+		"   /+ Extends/implements TTS_UNITTEST:TestBase.Setup +/",
+		"",
+		"end-method;",
+		"",
+		"method Teardown",
+		"   /+ Extends/implements TTS_UNITTEST:TestBase.Teardown +/",
+		"",
+		"end-method;",
+		"",
+		"method Run",
+		"   /+ Extends/implements TTS_UNITTEST:TestBase.Run +/",
+		"",
+		"",
+		"end-method;"
+		],
+		"description": "PSUnit - Class Template",
+		"scope": "source.peoplecode"
+	},
+	"TryCatch": {
+		"prefix": "TryCatch",
+		"body": [
+		"try",
+		"    ${1:rem Write try code here}",
+		"catch Exception &ex",
+		"    ${2:rem Write catch code here}",
+		"   Local string &exceptionOutput = &ex.ToString();",
+		"end-try;"
+		],
+		"description": "Try Catch Block",
+		"scope": "source.peoplecode"
+	},
+	"IfElse": {
+		"prefix": "IfElse",
+		"body": [
+		  "If ${1:Write condition here} Then",
+		  "",
+		  "Else",
+		  "",
+		  "End-If;"
+		],
+		"description": "If Then Else Statement",
+		"scope": "source.peoplecode"
+	},
+	"While": {
+		"prefix": "While",
+		"body": [
+		  "While ${1:write logical expression here}",
+		  "",
+		  "${2:/* statement_list */}",
+		  "",
+		  "End-While;"
+		],
+		"description": "While Loop",
+		"scope": "source.peoplecode"
+	},
+	"For": {
+		"prefix": "For",
+		"body": [
+		  "For &${1:count_variable} = ${2:count_start} To ${3:count_end}",
+		  "",
+		  "${4:/* statement_list */}",
+		  "",
+		  "End-For;"
+		],
+		"description": "For Loop",
+		"scope": "source.peoplecode"
+	},
+	"CreateException": {
+		"prefix": "CreateException",
+		"body": [
+		"/*",
+		"CreateException(message_set, message_num, default_txt [, subslist])",
+		"- where subslist is a comma-separated list of substitutions. The substitutions are referenced in the message text using the % character followed by an integer",
+		"  corresponding to the position of the substitution in the subslist.",
+		"*/",
+		"throw CreateException (2, 160, \"'%1' doesn't support property or method '%2'\", \"SomeClass\", \"SomeMethod\"); ",
+		],
+		"description": "CreateException Statement",
+		"scope": "source.peoplecode"
+	},
+	"CreateArray": {
+		"prefix": "CreateArray",
+		"body": [
+		"Local array of number &AN = CreateArrayRept(0,0); /* creates an empty array of number */",
+		"Local array of string &AS = CreateArrayRept(\"\", 0); /* creates an empty array of string */",
+		"Local Record &REC;",
+		"Local array of Record &AR = CreateArrayRept(&REC, 0); /*create empty array of records */",
+		"Local array of array of number &AAN = CreateArrayRept(&AN, 0); /*creates empty array of array of number */",
+		"Local array of array of string &AAS = CreateArray(CreateArrayRept(\"\", 0), CreateArrayRept(\"\", 0)); /* creates an empty array of array of string */"
+		],
+		"description": "CreateArray Statements",
+		"scope": "source.peoplecode"
+	}
+}
