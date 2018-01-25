@@ -14,6 +14,13 @@ The syntax highlighter applies to files with the following extensions:
 - tracesql (PeopleSoft Trace Files)
 - trc (PeopleSoft COBOL Trace Files)
 
+**Note:** To allow selection of a variable via a double-click, add the following to your User Settings:
+```json
+  "[peoplecode]": {
+    "editor.wordSeparators": "`~!@#$%^*()-=+[{]}\\|;:'\",.<>/?",
+  }
+```
+
 ### Extract Call Stack tool
 
 This tool will extract and format the call stack from a PeopleSoft trace file.

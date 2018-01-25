@@ -5,7 +5,7 @@
   "author": "Jay Mathew",
   "icon": "images/peoplesoft_tools.png",
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "Jatz",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
     ],
     "configuration": {
       "type": "object",
-      "title": "Example configuration",
+      "title": "PeopleSoft Tools configuration",
       "properties": {
         "peoplesoft-tools-tidy.removeHeaders": {
           "type": "boolean",

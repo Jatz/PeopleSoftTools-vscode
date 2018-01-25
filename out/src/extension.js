@@ -18,6 +18,11 @@ const PeopleCodeTraceSymbolProvider_1 = require("./providers/PeopleCodeTraceSymb
 const PeopleCodeCallStackSymbolProvider_1 = require("./providers/PeopleCodeCallStackSymbolProvider");
 var tidier = require("./tidier");
 var callStackExtractor = require("./callStackExtractor");
+// vscode.languages.setLanguageConfiguration("peoplecode", {
+//   // Allow ampersands to be part of a word by removing it from the wordPattern list.
+//   wordPattern: /(-?\d*\.\d\w*)|([^\`\~\!\#\%\^\*\(\)\-\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\?\s]+)/g
+//   wordPattern: /(-?\d.\d\w)|([^`~!\@#\%\^*()-\=+[{]}\|\;\:\'\"\,.\<>\/\?\s]+)/g
+// });
 function activate(context) {
     // Create the language client and start the client.
     let disposable = vscode.commands.registerCommand("extension.peoplesoft-tools-tidy-peoplecode-trace", () => __awaiter(this, void 0, void 0, function* () {
