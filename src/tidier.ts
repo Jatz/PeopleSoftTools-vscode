@@ -23,6 +23,7 @@ module.exports = {
       let tidiedFilePath: string = `${filePathDir}\\${fileNameWithoutExtension}_tidied${fileExt}`;
 
       var newFileStream = fs.createWriteStream(tidiedFilePath);
+      // @ts-ignore no-unused-variable
       var lineNr = 0;
       var traceType: string = "";
       // var linesNeedingTidying: number[] = [];
