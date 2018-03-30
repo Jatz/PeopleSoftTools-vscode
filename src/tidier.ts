@@ -1,19 +1,16 @@
 var fs = require("fs"),
-  // util = require("util"),
-  // stream = require("stream"),
   es = require("event-stream"),
   path = require("path");
 
 import * as vscode from "vscode";
-// var tmp = require("tmp");
-
-var settings: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration(
-  "peoplesoft-tools-tidy"
-);
 
 module.exports = {
   errorLines(filePath: string): Promise<string> {
     return new Promise<string>((resolve, reject) => {
+      var settings: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration(
+        "peoplesoft-tools-tidy"
+      );
+
       let filePathDir = path.dirname(filePath);
       let fileNameWithoutExtension = path.basename(
         filePath,
@@ -27,7 +24,6 @@ module.exports = {
       var lineNr = 0;
       var traceType: string = "";
       // var linesNeedingTidying: number[] = [];
-      // var linesNeedingPSAPPSRVRemoved: number[] = [];
 
       var s = fs
         .createReadStream(filePath)
@@ -100,11 +96,7 @@ module.exports = {
                   );
 
                   // The first line won't have any elapsed time
-                  line = line.replace(
-                    /^1\s+\d+:\d+:\d+\.\d+\s{14}/,
-                    ""
-                  );
-
+                  line = line.replace(/^1\s+\d+:\d+:\d+\.\d+\s{14}/, "");
                 }
               }
 
