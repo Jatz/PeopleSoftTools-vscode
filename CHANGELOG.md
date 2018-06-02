@@ -1,3 +1,9 @@
+## 0.1.4 - 15th June, 2018
+
+* [Jay Mathew (@Jatz)](https://github.com/Jatz)
+  * Fixed [Issue #4](https://github.com/Jatz/PeopleSoftTools-vscode/issues/4) - Syntax highlighting for REM comments are now block comments that begin with rem and end with a semicolon.
+  * Removed '%' from `editor.wordSeparators` suggestion in README.md (credit to [masebu (@masebu)](https://github.com/masebu) for the suggestion)
+
 ## 0.1.2 - 30th March, 2018
 
 * [Jay Mathew (@Jatz)](https://github.com/Jatz)

@@ -17,7 +17,7 @@ The syntax highlighter applies to files with the following extensions:
 **Note:** To allow selection of a variable via a double-click, add the following to your User Settings:
 ```json
   "[peoplecode]": {
-    "editor.wordSeparators": "`~!@#$%^*()-=+[{]}\\|;:'\",.<>/?",
+    "editor.wordSeparators": "`~!@#$^*()-=+[{]}\\|;:'\",.<>/?",
   }
 ```
 

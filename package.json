@@ -1,12 +1,11 @@
 {
   "name": "peoplesoft-tools",
-  "description":
-    "An unofficial PeopleSoft plugin for various PeopleSoft related tasks",
+  "description": "An unofficial PeopleSoft plugin for various PeopleSoft related tasks",
   "displayName": "PeopleSoft Tools",
   "author": "Jay Mathew",
   "icon": "images/peoplesoft_tools.png",
   "license": "MIT",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "publisher": "Jatz",
   "repository": {
     "type": "git",
@@ -15,7 +14,11 @@
   "engines": {
     "vscode": "^1.16.0"
   },
-  "categories": ["Other", "Languages", "Snippets"],
+  "categories": [
+    "Other",
+    "Languages",
+    "Snippets"
+  ],
   "activationEvents": [
     "onLanguage:peoplecode",
     "onLanguage:peoplecode_trace",
@@ -42,8 +45,7 @@
         "peoplesoft-tools-tidy.removeHeaders": {
           "type": "boolean",
           "default": true,
-          "description":
-            "Removes the PSAPPSRV header text to make the trace file easier to read."
+          "description": "Removes the PSAPPSRV header text to make the trace file easier to read."
         },
         "peoplesoft-tools-tidy.removeAllBlankLines": {
           "type": "boolean",
@@ -55,26 +57,47 @@
     "languages": [
       {
         "id": "peoplecode",
-        "aliases": ["PeopleCode", "peoplecode"],
-        "extensions": [".ppl", ".pcode"],
+        "aliases": [
+          "PeopleCode",
+          "peoplecode"
+        ],
+        "extensions": [
+          ".ppl",
+          ".pcode"
+        ],
         "configuration": "./language-configuration.json"
       },
       {
         "id": "peoplecode_trace",
-        "aliases": ["PeopleCode Trace", "tracesql"],
-        "extensions": [".tracesql"],
+        "aliases": [
+          "PeopleCode Trace",
+          "tracesql"
+        ],
+        "extensions": [
+          ".tracesql"
+        ],
         "configuration": "./language-configuration.json"
       },
       {
         "id": "peoplesoft_cobol_trace",
-        "aliases": ["PeopleSoft COBOL Trace", "trace_cobol"],
-        "extensions": [".trc"],
+        "aliases": [
+          "PeopleSoft COBOL Trace",
+          "trace_cobol"
+        ],
+        "extensions": [
+          ".trc"
+        ],
         "configuration": "./language-configuration.json"
       },
       {
         "id": "peoplesoft_callstack",
-        "aliases": ["PeopleCode Call Stack", "peoplecode_callstack"],
-        "extensions": [".pcstack"],
+        "aliases": [
+          "PeopleCode Call Stack",
+          "peoplecode_callstack"
+        ],
+        "extensions": [
+          ".pcstack"
+        ],
         "configuration": "./language-configuration.json"
       }
     ],
