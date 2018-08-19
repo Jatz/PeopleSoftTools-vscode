@@ -14,12 +14,21 @@ The syntax highlighter applies to files with the following extensions:
 - tracesql (PeopleSoft Trace Files)
 - trc (PeopleSoft COBOL Trace Files)
 
-**Note:** To allow selection of a variable via a double-click, add the following to your User Settings:
+**Note:** The following are recommended User Settings:
 ```json
+{
+  "editor.largeFileOptimizations": false,
   "[peoplecode]": {
-    "editor.wordSeparators": "`~!@#$^*()-=+[{]}\\|;:'\",.<>/?",
+    "editor.wordSeparators": "`~!@#$^*()-=+[{]}\\|;:'\",.<>/?"
+  },
+  "[peoplecode_trace]": {
+    "editor.wordSeparators": "`~!@#$^*()-=+[{]}\\|;:'\",.<>/?"
   }
+}
 ```
+
+- `editor.largeFileOptimizations` - allows Visual Studio Code to open large files without disabling any of the plugin's features. At this stage, this only seems to work at a global level.
+- `editor.wordSeparators` - allows you to select a variable via a double-click.
 
 ### Extract Call Stack tool
 
