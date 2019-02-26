@@ -1,3 +1,8 @@
+## 0.2.6 - 7th March, 2019
+
+* [Jay Mathew (@Jatz)](https://github.com/Jatz)
+  * Added SQL statements and event/SQL duration for `PeopleSoft Tools - Extract Call Stack`
+
 ## 0.1.5 - 20th August, 2018
 
 * [Jay Mathew (@Jatz)](https://github.com/Jatz)

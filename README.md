@@ -49,7 +49,7 @@ Trace files that have not been generated using these trace flags will not produc
 
 This tool will tidy up a tracesql file by performing the following operations:
 - Adding a matching quote to the end of certain lines that have an odd number of quotes, ensuring that the syntax highlighting of the PeopleCode trace file works correctly.
-- Removing blank lines (peoplesoft-tools-tidy.removeAllBlankLines)
-- Removing the header text to make the trace file easier to read (peoplesoft-tools-tidy.removeHeaders). This option is enabled by default. Feel free to set this to false in the user settings for this plugin if you would like to disable this functionality.
+- Removing blank lines (peoplesoft-tools.tidy_removeAllBlankLines)
+- Removing the header text to make the trace file easier to read (peoplesoft-tools.tidy_removeHeaders). This option is enabled by default. Feel free to set this to false in the user settings for this plugin if you would like to disable this functionality.
 
 **Note:** A new tidied file will be created in the same folder as the trace file

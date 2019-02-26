@@ -8,7 +8,7 @@ module.exports = {
   errorLines(filePath: string): Promise<string> {
     return new Promise<string>((resolve, reject) => {
       var settings: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration(
-        "peoplesoft-tools-tidy"
+        "peoplesoft-tools"
       );
 
       let filePathDir = path.dirname(filePath);
@@ -30,7 +30,7 @@ module.exports = {
         .pipe(es.split())
         .pipe(
           es
-            .mapSync(function(line: string) {
+            .mapSync(function (line: string) {
               // pause the readstream
               s.pause();
 
@@ -48,7 +48,7 @@ module.exports = {
 
               // if there are PSAPPSRV headers, strip them
               // we check for 2 types of PSAPPSRV headers
-              if (settings.removeHeaders) {
+              if (settings.tidy_removeHeaders) {
                 let results_psappsrv_header_type_1: string[] = /(^PSAPPSRV.*?\d\.\d{6}\s)(.*)/.exec(
                   line
                 );
@@ -101,7 +101,7 @@ module.exports = {
               }
 
               // We also check for blank lines, and if there are any we ignore them
-              if (settings.removeAllBlankLines && /^\s*$/.test(line)) {
+              if (settings.tidy_removeAllBlankLines && /^\s*$/.test(line)) {
                 // console.log("Found blank line");
               } else {
                 newFileStream.write(`${line}\n`);
@@ -110,11 +110,11 @@ module.exports = {
               // resume the readstream, possibly from a callback
               s.resume();
             })
-            .on("error", function(err: string) {
+            .on("error", function (err: string) {
               console.log("Error while reading file.", err);
               reject([]);
             })
-            .on("end", function() {
+            .on("end", function () {
               // console.log("Read entire file.");
 
               // linesNeedingTidying.map(line => {

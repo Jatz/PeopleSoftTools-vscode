@@ -5,18 +5,18 @@
   "author": "Jay Mathew",
   "icon": "images/peoplesoft_tools.png",
   "license": "MIT",
-  "version": "0.1.5",
+  "version": "0.2.6",
   "publisher": "Jatz",
   "repository": {
     "type": "git",
     "url": "https://github.com/Jatz/PeopleSoftTools-vscode.git"
   },
   "engines": {
-    "vscode": "^1.16.0"
+    "vscode": "^1.28.0"
   },
   "categories": [
     "Other",
-    "Languages",
+    "Programming Languages",
     "Snippets"
   ],
   "activationEvents": [
@@ -42,12 +42,18 @@
       "type": "object",
       "title": "PeopleSoft Tools configuration",
       "properties": {
-        "peoplesoft-tools-tidy.removeHeaders": {
+        "peoplesoft-tools.logDebugInfo": {
+          "type": "boolean",
+          "default": false,
+          "description": "%peoplesoft-tools.logDebugInfo%",
+          "scope": "window"
+        },
+        "peoplesoft-tools.tidy_removeHeaders": {
           "type": "boolean",
           "default": true,
           "description": "Removes the PSAPPSRV header text to make the trace file easier to read."
         },
-        "peoplesoft-tools-tidy.removeAllBlankLines": {
+        "peoplesoft-tools.tidy_removeAllBlankLines": {
           "type": "boolean",
           "default": true,
           "description": "Removes any blank lines in the trace file."
@@ -136,17 +142,16 @@
     "postinstall": "node ./node_modules/vscode/bin/install"
   },
   "dependencies": {
-    "event-stream": "^3.3.4",
+    "event-stream": "^4.0.1",
     "fs": "0.0.1-security",
     "path": "^0.12.7",
-    "stream": "0.0.2",
-    "util": "^0.10.3",
-    "vscode": "^1.1.5",
-    "vscode-languageclient": "^3.4.2"
+    "util": "^0.11.1",
+    "vscode-languageclient": "^5.2.1"
   },
   "devDependencies": {
-    "@types/mocha": "^2.2.42",
-    "@types/node": "^6.0.88",
-    "typescript": "^2.8.1"
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.10.4",
+    "typescript": "^3.3.3333",
+    "vscode": "^1.1.30"
   }
 }
