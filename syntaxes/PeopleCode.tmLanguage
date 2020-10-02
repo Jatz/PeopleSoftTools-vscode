@@ -132,10 +132,6 @@
 					</dict>
 					<dict>
 						<key>include</key>
-						<string>text.html.pcodedoc</string>
-					</dict>
-					<dict>
-						<key>include</key>
 						<string>#comments-inline</string>
 					</dict>
 					<dict>
