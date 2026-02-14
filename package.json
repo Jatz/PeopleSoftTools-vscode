@@ -152,6 +152,6 @@
     "@types/mocha": "^5.2.6",
     "@types/node": "^11.10.4",
     "typescript": "^3.3.3333",
-    "vscode": "^1.1.30"
+    "vscode": "^1.1.37"
   }
 }
